@@ -6,4 +6,19 @@ let checkLength = (string, maxLength) => {
 
 }
 
-console.log(checkLength('проверяемая строка', 10));
+let checkPalindrome = (string) => {
+
+  string = string.replaceAll(" ", "");
+  normalisedString = string.toUpperCase();
+  let placeholderString = "";
+
+  for (let i = normalisedString.length -1; i >= 0; i--){
+
+    let char = normalisedString[i];
+    placeholderString += char;
+  }
+
+
+  return normalisedString === placeholderString;
+}
+
