@@ -22,3 +22,25 @@ let checkPalindrome = (string) => {
   return normalisedString === placeholderString;
 }
 
+let extractingNumbers = (string) => {
+  string = string.toString();
+  let result = '';
+
+  for (let i = 0; i < string.length; i++) {
+      let char = string[i];
+
+      if (!Number.isNaN(parseInt(char))) {
+        result += char
+      }
+    }
+      let number = parseInt(result);
+
+      if (Number.isNaN(number)) {
+        return NaN;
+      }
+
+      return number;
+  }
+
+
+
