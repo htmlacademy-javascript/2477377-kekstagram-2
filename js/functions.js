@@ -1,4 +1,4 @@
-let checkLength = (string, maxLength) => {
+let checkLength = (string = '', maxLength = 1) => {
 
     let result = string.length <= maxLength;
 
@@ -6,7 +6,7 @@ let checkLength = (string, maxLength) => {
 
 }
 
-let checkPalindrome = (string) => {
+let checkPalindrome = (string = '') => {
 
   string = string.replaceAll(" ", "");
   let normalisedString = string.toUpperCase();
@@ -22,7 +22,7 @@ let checkPalindrome = (string) => {
   return normalisedString === placeholderString;
 }
 
-let extractingNumbers = (string) => {
+let extractingNumbers = (string = '') => {
   string = string.toString();
   let result = '';
 
