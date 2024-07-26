@@ -9,7 +9,7 @@ let checkLength = (string, maxLength) => {
 let checkPalindrome = (string) => {
 
   string = string.replaceAll(" ", "");
-  normalisedString = string.toUpperCase();
+  let normalisedString = string.toUpperCase();
   let placeholderString = "";
 
   for (let i = normalisedString.length -1; i >= 0; i--){
