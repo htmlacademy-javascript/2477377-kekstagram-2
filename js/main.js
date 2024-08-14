@@ -35,6 +35,21 @@ const NAMES = [
   'Феодора'
 ];
 
+const MIN_ID_NUMBER = 1;
+const MAX_ID_NUMBER = 25;
+const MIN_URL_NUMBER = 1;
+const MAX_URL_NUMBER = 25;
+const MIN_COMMENT_ID = 1;
+const MAX_COMMENT_ID = 1000;
+const MIN_NUMBER_OF_COMMENTS = 0;
+const MAX_NUMBER_OF_COMMENTS = 30;
+const MIN_AVATAR_ID = 1;
+const MAX_AVATAR_ID = 6;
+const MIN_NUMBER_OF_LIKES = 15;
+const MAX_NUMBER_OF_LIKES = 200;
+const MIN_MESSAGE_COUNT = 1;
+const MAX_MESSAGE_COUNT = 2;
+
 function createRandomNumber(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
@@ -57,19 +72,21 @@ function createUniqueNumberGenerator(min, max) {
   };
 }
 
-const generatorUniqueId = createUniqueNumberGenerator(1, 25);
-const generatorUniqueCommentId = createUniqueNumberGenerator(1, 1000);
+const generatorUniqueId = createUniqueNumberGenerator(MIN_ID_NUMBER, MAX_ID_NUMBER);
+const generatorUniqueURLNumber = createUniqueNumberGenerator(MIN_URL_NUMBER, MAX_URL_NUMBER);
+const generatorUniqueCommentId = createUniqueNumberGenerator(MIN_COMMENT_ID, MAX_COMMENT_ID);
 const generatorRandomArrayElement = (elements) => elements[createRandomNumber(0, elements.length - 1)];
-const generatorNumberOfComments = () => createRandomNumber(0, 30);
-const generatorAvatars = () => createRandomNumber(1, 6);
-const generatorLikes = () => createRandomNumber(15, 200);
+const generatorNumberOfComments = () => createRandomNumber(MIN_NUMBER_OF_COMMENTS, MAX_NUMBER_OF_COMMENTS);
+const generatorAvatars = () => createRandomNumber(MIN_AVATAR_ID, MAX_AVATAR_ID);
+const generatorLikes = () => createRandomNumber(MIN_NUMBER_OF_LIKES, MAX_NUMBER_OF_LIKES);
+const generatorOfMessageCount = () => createRandomNumber(MIN_MESSAGE_COUNT, MAX_MESSAGE_COUNT);
 
 const generateComments = () => {
   const numberOfComments = generatorNumberOfComments();
   const comments = [];
 
   for (let i = 0; i < numberOfComments; i++) {
-    const messageCount = createRandomNumber(1, 2);
+    const messageCount = generatorOfMessageCount();
     const message = Array.from({ length: messageCount }, () => generatorRandomArrayElement(MESSAGES)).join(' ');
 
     comments.push({
@@ -85,7 +102,7 @@ const generateComments = () => {
 
 const descriptionOfPhoto = (id) => ({
   id,
-  url: `photos/${id}.jpg`,
+  url: `photos/${generatorUniqueURLNumber()}.jpg`,
   description: generatorRandomArrayElement(DESCRIPTIONS),
   likes: generatorLikes(),
   comments: generateComments()
