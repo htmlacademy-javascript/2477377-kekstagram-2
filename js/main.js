@@ -49,6 +49,7 @@ const MIN_NUMBER_OF_LIKES = 15;
 const MAX_NUMBER_OF_LIKES = 200;
 const MIN_MESSAGE_COUNT = 1;
 const MAX_MESSAGE_COUNT = 2;
+const NUMBER_OF_REQUIRED_OBJECTS = 25;
 
 function createRandomNumber(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -110,7 +111,7 @@ const descriptionOfPhoto = (id) => ({
 
 const createPhotoDescriptions = () => {
   const photoDescriptions = [];
-  for (let i = 1; i <= 25; i++) {
+  for (let i = 1; i <= NUMBER_OF_REQUIRED_OBJECTS; i++) {
     photoDescriptions.push(descriptionOfPhoto(i));
   }
   return photoDescriptions;
