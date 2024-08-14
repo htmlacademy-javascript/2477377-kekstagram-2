@@ -1,4 +1,4 @@
-const DESCRIPTION = [
+const DESCRIPTIONS = [
   'Хорошая красивая фотография',
   'Чувствую себя Анри Картье-Брессоном',
   'Живите с этим',
@@ -11,7 +11,7 @@ const DESCRIPTION = [
   'Муж купил, мне муж купил'
 ];
 
-const MESSAGE = [
+const MESSAGES = [
   'Всё отлично!',
   'В целом всё неплохо. Но не всё.',
   'Когда вы делаете фотографию, хорошо бы убирать палец из кадра. В конце концов это просто непрофессионально.',
@@ -70,7 +70,7 @@ const generateComments = () => {
 
   for (let i = 0; i < numberOfComments; i++) {
     const messageCount = createRandomNumber(1, 2);
-    const message = Array.from({ length: messageCount }, () => generatorRandomArrayElement(MESSAGE)).join(' ');
+    const message = Array.from({ length: messageCount }, () => generatorRandomArrayElement(MESSAGES)).join(' ');
 
     comments.push({
       id: generatorUniqueCommentId(),
@@ -86,7 +86,7 @@ const generateComments = () => {
 const descriptionOfPhoto = (id) => ({
   id,
   url: `photos/${id}.jpg`,
-  description: generatorRandomArrayElement(DESCRIPTION),
+  description: generatorRandomArrayElement(DESCRIPTIONS),
   likes: generatorLikes(),
   comments: generateComments()
 });
@@ -101,4 +101,4 @@ const createPhotoDescriptions = () => {
 
 const photoDescriptions = createPhotoDescriptions();
 
-console.log(JSON.stringify(photoDescriptions, null, 2));
+console.log(photoDescriptions);
