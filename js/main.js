@@ -60,7 +60,7 @@ function createUniqueNumberGenerator(min, max) {
 
   return function () {
     if (existentValues.size >= (max - min + 1)) {
-      console.error("Достигнуто максимальное количество уникальных значений");
+      console.error('Достигнуто максимальное количество уникальных значений');
       return null;
     }
     let currentValue;
@@ -119,4 +119,4 @@ const createPhotoDescriptions = () => {
 
 const photoDescriptions = createPhotoDescriptions();
 
-console.log(photoDescriptions);
+//console.log(photoDescriptions);
