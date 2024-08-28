@@ -56,21 +56,27 @@ function createRandomNumber(min, max) {
 }
 
 function createUniqueNumberGenerator(min, max) {
-  const existentValues = new Set();
+  const numbers = [];
+
+  for (let i = min; i <= max; i++) {
+    numbers.push(i);
+  }
+
+  for (let i = numbers.length - 1; i > 0; i--){
+    const j = createUniqueNumberGenerator(0,i);
+    numbers [i], numbers[j] = numbers[j], numbers[i];
+  }
+
+  let index = 0;
 
   return function () {
-    if (existentValues.size >= (max - min + 1)) {
+    if (index >= numbers.length) {
       console.error('Достигнуто максимальное количество уникальных значений');
       return null;
     }
-    let currentValue;
-    do {
-      currentValue = createRandomNumber(min, max);
-    } while (existentValues.has(currentValue));
-
-    existentValues.add(currentValue);
-    return currentValue;
+    return numbers[index++];
   };
+
 }
 
 const generateUniqueId = createUniqueNumberGenerator(MIN_ID_NUMBER, MAX_ID_NUMBER);
