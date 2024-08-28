@@ -63,7 +63,7 @@ function createUniqueNumberGenerator(min, max) {
   }
 
   for (let i = numbers.length - 1; i > 0; i--){
-    const j = createUniqueNumberGenerator(0,i);
+    const j = createRandomNumber(0,i);
     numbers [i], numbers[j] = numbers[j], numbers[i];
   }
 
@@ -89,18 +89,18 @@ const generateLikes = () => createRandomNumber(MIN_NUMBER_OF_LIKES, MAX_NUMBER_O
 const generateOfMessageCount = () => createRandomNumber(MIN_MESSAGE_COUNT, MAX_MESSAGE_COUNT);
 
 const generateComments = () => {
-  const numberOfComments = generatorNumberOfComments();
+  const numberOfComments = generateNumberOfComments();
   const comments = [];
 
   for (let i = 0; i < numberOfComments; i++) {
-    const messageCount = generatorOfMessageCount();
-    const message = Array.from({ length: messageCount }, () => generatorRandomArrayElement(MESSAGES)).join(' ');
+    const messageCount = generateOfMessageCount();
+    const message = Array.from({ length: messageCount }, () => generateRandomArrayElement(MESSAGES)).join(' ');
 
     comments.push({
-      id: generatorUniqueCommentId(),
-      avatar: `img/avatar-${generatorAvatars()}.svg`,
+      id: generateUniqueCommentId(),
+      avatar: `img/avatar-${generateAvatars()}.svg`,
       message,
-      name: generatorRandomArrayElement(NAMES)
+      name: generateRandomArrayElement(NAMES)
     });
   }
 
@@ -109,20 +109,14 @@ const generateComments = () => {
 
 const descriptionOfPhoto = (id) => ({
   id,
-  url: `photos/${generatorUniqueURLNumber()}.jpg`,
-  description: generatorRandomArrayElement(DESCRIPTIONS),
-  likes: generatorLikes(),
+  url: `photos/${generateUniqueURLNumber()}.jpg`,
+  description: generateRandomArrayElement(DESCRIPTIONS),
+  likes: generateLikes(),
   comments: generateComments()
 });
 
-const createPhotoDescriptions = () => {
-  const photoDescriptions = [];
-  for (let i = 1; i <= NUMBER_OF_REQUIRED_OBJECTS; i++) {
-    photoDescriptions.push(descriptionOfPhoto(i));
-  }
-  return photoDescriptions;
-};
+const createPhotoDescriptions = () => Array.from({length: NUMBER_OF_REQUIRED_OBJECTS}, (_, i) => descriptionOfPhoto(i + 1));
 
 const photoDescriptions = createPhotoDescriptions();
 
-//console.log(photoDescriptions);
+console.log(photoDescriptions);
