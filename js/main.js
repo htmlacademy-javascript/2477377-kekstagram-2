@@ -73,14 +73,14 @@ function createUniqueNumberGenerator(min, max) {
   };
 }
 
-const generatorUniqueId = createUniqueNumberGenerator(MIN_ID_NUMBER, MAX_ID_NUMBER);
-const generatorUniqueURLNumber = createUniqueNumberGenerator(MIN_URL_NUMBER, MAX_URL_NUMBER);
-const generatorUniqueCommentId = createUniqueNumberGenerator(MIN_COMMENT_ID, MAX_COMMENT_ID);
-const generatorRandomArrayElement = (elements) => elements[createRandomNumber(0, elements.length - 1)];
-const generatorNumberOfComments = () => createRandomNumber(MIN_NUMBER_OF_COMMENTS, MAX_NUMBER_OF_COMMENTS);
-const generatorAvatars = () => createRandomNumber(MIN_AVATAR_ID, MAX_AVATAR_ID);
-const generatorLikes = () => createRandomNumber(MIN_NUMBER_OF_LIKES, MAX_NUMBER_OF_LIKES);
-const generatorOfMessageCount = () => createRandomNumber(MIN_MESSAGE_COUNT, MAX_MESSAGE_COUNT);
+const generateUniqueId = createUniqueNumberGenerator(MIN_ID_NUMBER, MAX_ID_NUMBER);
+const generateUniqueURLNumber = createUniqueNumberGenerator(MIN_URL_NUMBER, MAX_URL_NUMBER);
+const generateUniqueCommentId = createUniqueNumberGenerator(MIN_COMMENT_ID, MAX_COMMENT_ID);
+const generateRandomArrayElement = (elements) => elements[createRandomNumber(0, elements.length - 1)];
+const generateNumberOfComments = () => createRandomNumber(MIN_NUMBER_OF_COMMENTS, MAX_NUMBER_OF_COMMENTS);
+const generateAvatars = () => createRandomNumber(MIN_AVATAR_ID, MAX_AVATAR_ID);
+const generateLikes = () => createRandomNumber(MIN_NUMBER_OF_LIKES, MAX_NUMBER_OF_LIKES);
+const generateOfMessageCount = () => createRandomNumber(MIN_MESSAGE_COUNT, MAX_MESSAGE_COUNT);
 
 const generateComments = () => {
   const numberOfComments = generatorNumberOfComments();
