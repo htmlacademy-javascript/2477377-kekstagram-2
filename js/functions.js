@@ -1,46 +1,45 @@
-let checkLength = (string = '', maxLength = 1) => {
+const checkLength = (string = '', maxLength = 1) => {
 
-    let result = string.length <= maxLength;
+  const result = string.length <= maxLength;
 
-    return result;
+  return result;
 
-}
+};
 
-let checkPalindrome = (string = '') => {
+const checkPalindrome = (string = '') => {
 
-  string = string.replaceAll(" ", "");
-  let normalisedString = string.toUpperCase();
-  let placeholderString = "";
+  string = string.replaceAll(' ', '');
+  const normalisedString = string.toUpperCase();
+  let placeholderString = '';
 
-  for (let i = normalisedString.length -1; i >= 0; i--){
+  for (let i = normalisedString.length - 1; i >= 0; i--){
 
-    let char = normalisedString[i];
+    const char = normalisedString[i];
     placeholderString += char;
   }
 
 
   return normalisedString === placeholderString;
-}
+};
 
-let extractingNumbers = (string = '') => {
+const extractingNumbers = (string = '') => {
   string = string.toString();
   let result = '';
 
   for (let i = 0; i < string.length; i++) {
-      let char = string[i];
+    const char = string[i];
 
-      if (!Number.isNaN(parseInt(char))) {
-        result += char
-      }
+    if (!Number.isNaN(parseInt(char))) {
+      result += char;
     }
-      let number = parseInt(result);
+  }
+  const number = parseInt(result);
 
-      if (Number.isNaN(number)) {
-        return NaN;
-      }
-
-      return number;
+  if (Number.isNaN(number)) {
+    return NaN;
   }
 
+  return number;
+};
 
 
