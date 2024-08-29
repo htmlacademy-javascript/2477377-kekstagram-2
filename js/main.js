@@ -35,12 +35,8 @@ const NAMES = [
   'Феодора'
 ];
 
-const MIN_ID_NUMBER = 1;
-const MAX_ID_NUMBER = 25;
 const MIN_URL_NUMBER = 1;
 const MAX_URL_NUMBER = 25;
-const MIN_COMMENT_ID = 1;
-const MAX_COMMENT_ID = Number.MAX_SAFE_INTEGER;
 const MIN_NUMBER_OF_COMMENTS = 0;
 const MAX_NUMBER_OF_COMMENTS = 30;
 const MIN_AVATAR_ID = 1;
@@ -64,7 +60,8 @@ function createUniqueNumberGenerator(min, max) {
 
   for (let i = numbers.length - 1; i > 0; i--){
     const j = createRandomNumber(0,i);
-    numbers [i], numbers[j] = numbers[j], numbers[i];
+    numbers[i] = numbers[j];
+    numbers[j] = numbers [i];
   }
 
   let index = 0;
@@ -79,9 +76,13 @@ function createUniqueNumberGenerator(min, max) {
 
 }
 
-const generateUniqueId = createUniqueNumberGenerator(MIN_ID_NUMBER, MAX_ID_NUMBER);
+const generateUniqueCommentId = () => {
+  const randomPart = Math.floor(Math.random() * Number.MAX_SAFE_INTEGER);
+  const timestampPart = Date.now();
+  return `${randomPart}-${timestampPart}`;
+};
+
 const generateUniqueURLNumber = createUniqueNumberGenerator(MIN_URL_NUMBER, MAX_URL_NUMBER);
-const generateUniqueCommentId = createUniqueNumberGenerator(MIN_COMMENT_ID, MAX_COMMENT_ID);
 const generateRandomArrayElement = (elements) => elements[createRandomNumber(0, elements.length - 1)];
 const generateNumberOfComments = () => createRandomNumber(MIN_NUMBER_OF_COMMENTS, MAX_NUMBER_OF_COMMENTS);
 const generateAvatars = () => createRandomNumber(MIN_AVATAR_ID, MAX_AVATAR_ID);
