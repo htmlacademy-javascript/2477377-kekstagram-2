@@ -120,4 +120,4 @@ const createPhotoDescriptions = () => Array.from({length: NUMBER_OF_REQUIRED_OBJ
 
 const photoDescriptions = createPhotoDescriptions();
 
-console.log(photoDescriptions);
+//console.log(photoDescriptions);
