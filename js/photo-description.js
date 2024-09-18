@@ -1,6 +1,6 @@
-import { createRandomNumber, createUniqueNumberGenerator } from './random-util.mjs';
-import { DESCRIPTIONS } from './photo-data.mjs';
-import { generateComments } from './comment-generator.mjs';
+import { createRandomNumber, createUniqueNumberGenerator } from './random-util.js';
+import { DESCRIPTIONS } from './photo-data.js';
+import { generateComments } from './comment-generator.js';
 
 const MIN_URL_NUMBER = 1;
 const MAX_URL_NUMBER = 25;

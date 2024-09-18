@@ -1,4 +1,4 @@
-import { createPhotoDescriptions } from './photo-description.mjs';
+import { createPhotoDescriptions } from './photo-description.js';
 
 const NUMBER_OF_REQUIRED_OBJECTS = 25;
 

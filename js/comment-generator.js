@@ -1,5 +1,5 @@
-import { createRandomNumber, generateUniqueCommentId } from './random-util.mjs';
-import { MESSAGES, NAMES } from './photo-data.mjs';
+import { createRandomNumber, generateUniqueCommentId } from './random-util.js';
+import { MESSAGES, NAMES } from './photo-data.js';
 
 const MIN_AVATAR_ID = 1;
 const MAX_AVATAR_ID = 6;
