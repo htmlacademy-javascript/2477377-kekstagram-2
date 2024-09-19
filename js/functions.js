@@ -42,3 +42,4 @@ const extractingNumbers = (string = '') => {
 // console.log(extractingNumbers(2023));
 // console.log(extractingNumbers(-1));
 // console.log(extractingNumbers(1.5));
+
