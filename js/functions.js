@@ -45,28 +45,24 @@ const extractingNumbers = (string = '') => {
 
 const checkWorkingHours = (startOfWork = '07:00', endOfWork = '18:00', startOfMeeting = '13:00', meetingTimeInMin = 60) => {
 
-  let splittedStartOfWork = startOfWork.split(':');
-  let splittedEndOfWork = endOfWork.split(':');
-  let splittedStartOfMeeting = startOfMeeting.split(':');
+  const toMinutes = (time) => {
+    const [hours, minutes] = time.split(':').map((str) => parseInt(str, 10));
+    return hours * 60 + minutes;
+  };
 
-  let minStartOfWork = (parseInt(splittedStartOfWork[0], 10) * 60) + parseInt(splittedStartOfWork[1], 10);
-  let minEndOfWork = (parseInt(splittedEndOfWork[0], 10) * 60) + parseInt(splittedEndOfWork[1], 10);
-  let minStartOfMeeting = (parseInt(splittedStartOfMeeting[0], 10) * 60) + parseInt(splittedStartOfMeeting[1], 10);
+  const minStartOfWork = toMinutes(startOfWork);
+  const minEndOfWork = toMinutes(endOfWork);
+  const minStartOfMeeting = toMinutes(startOfMeeting);
 
-  let endOfMeeting = minStartOfMeeting + parseInt(meetingTimeInMin, 10);
+  const endOfMeeting = minStartOfMeeting + parseInt(meetingTimeInMin, 10);
 
-  if (minStartOfMeeting >= minStartOfWork && endOfMeeting <= minEndOfWork) {
-    return true;
-  } else {
-    return false;
-  }
-}
+  return minStartOfMeeting >= minStartOfWork && endOfMeeting <= minEndOfWork;
+};
 
-console.log(checkWorkingHours('08:00', '17:30', '14:00', 90)); // true
-console.log(checkWorkingHours('8:0', '10:0', '8:0', 120)); // true
-console.log(checkWorkingHours('08:00', '14:30', '14:00', 90)); // false
-console.log(checkWorkingHours('14:00', '17:30', '08:0', 90)); // false
-console.log(checkWorkingHours('8:00', '17:30', '08:00', 900)); // false
-
+// console.log(checkWorkingHours('08:00', '17:30', '14:00', 90)); // true
+// console.log(checkWorkingHours('8:0', '10:0', '8:0', 120)); // true
+// console.log(checkWorkingHours('08:00', '14:30', '14:00', 90)); // false
+// console.log(checkWorkingHours('14:00', '17:30', '08:0', 90)); // false
+// console.log(checkWorkingHours('8:00', '17:30', '08:00', 900)); // false
 
 
