@@ -5,12 +5,14 @@ const MIN_AVATAR_ID = 1;
 const MAX_AVATAR_ID = 6;
 const MIN_MESSAGE_COUNT = 1;
 const MAX_MESSAGE_COUNT = 2;
+const MIN_COMMENTS_COUNT = 0;
+const MAX_COMMENTS_COUNT = 30;
 
-function generateRandomArrayElement(elements) {
+function returnRandomArrayElement(elements) {
   return elements[createRandomNumber(0, elements.length - 1)];
 }
 
-function generateAvatars() {
+function generateAvatarsCount() {
   return createRandomNumber(MIN_AVATAR_ID, MAX_AVATAR_ID);
 }
 
@@ -19,18 +21,18 @@ function generateOfMessageCount() {
 }
 
 function generateComments() {
-  const numberOfComments = createRandomNumber(0, 30); // 0 to 30 comments
+  const numberOfComments = createRandomNumber(MIN_COMMENTS_COUNT, MAX_COMMENTS_COUNT); // 0 to 30 comments
   const comments = [];
 
   for (let i = 0; i < numberOfComments; i++) {
     const messageCount = generateOfMessageCount();
-    const message = Array.from({ length: messageCount }, () => generateRandomArrayElement(MESSAGES)).join(' ');
+    const message = Array.from({ length: messageCount }, () => returnRandomArrayElement(MESSAGES)).join(' ');
 
     comments.push({
       id: generateUniqueCommentId(),
-      avatar: `img/avatar-${generateAvatars()}.svg`,
+      avatar: `img/avatar-${generateAvatarsCount()}.svg`,
       message,
-      name: generateRandomArrayElement(NAMES)
+      name: returnRandomArrayElement(NAMES)
     });
   }
 

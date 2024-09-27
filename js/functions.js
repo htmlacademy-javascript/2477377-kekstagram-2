@@ -43,3 +43,26 @@ const extractingNumbers = (string = '') => {
 // console.log(extractingNumbers(-1));
 // console.log(extractingNumbers(1.5));
 
+const toMinutes = (time) => {
+  const [hours, minutes] = time.split(':').map((str) => parseInt(str, 10));
+  return hours * 60 + minutes;
+};
+
+const checkWorkingHours = (startOfWork = '07:00', endOfWork = '18:00', startOfMeeting = '13:00', meetingTimeInMin = 60) => {
+
+  const minStartOfWork = toMinutes(startOfWork);
+  const minEndOfWork = toMinutes(endOfWork);
+  const minStartOfMeeting = toMinutes(startOfMeeting);
+
+  const endOfMeeting = minStartOfMeeting + parseInt(meetingTimeInMin, 10);
+
+  return minStartOfMeeting >= minStartOfWork && endOfMeeting <= minEndOfWork;
+};
+
+// console.log(checkWorkingHours('08:00', '17:30', '14:00', 90)); // true
+// console.log(checkWorkingHours('8:0', '10:0', '8:0', 120)); // true
+// console.log(checkWorkingHours('08:00', '14:30', '14:00', 90)); // false
+// console.log(checkWorkingHours('14:00', '17:30', '08:0', 90)); // false
+// console.log(checkWorkingHours('8:00', '17:30', '08:00', 900)); // false
+
+
