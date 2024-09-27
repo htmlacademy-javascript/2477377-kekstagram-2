@@ -43,12 +43,12 @@ const extractingNumbers = (string = '') => {
 // console.log(extractingNumbers(-1));
 // console.log(extractingNumbers(1.5));
 
-const checkWorkingHours = (startOfWork = '07:00', endOfWork = '18:00', startOfMeeting = '13:00', meetingTimeInMin = 60) => {
+const toMinutes = (time) => {
+  const [hours, minutes] = time.split(':').map((str) => parseInt(str, 10));
+  return hours * 60 + minutes;
+};
 
-  const toMinutes = (time) => {
-    const [hours, minutes] = time.split(':').map((str) => parseInt(str, 10));
-    return hours * 60 + minutes;
-  };
+const checkWorkingHours = (startOfWork = '07:00', endOfWork = '18:00', startOfMeeting = '13:00', meetingTimeInMin = 60) => {
 
   const minStartOfWork = toMinutes(startOfWork);
   const minEndOfWork = toMinutes(endOfWork);
